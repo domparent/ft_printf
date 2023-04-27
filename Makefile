@@ -6,11 +6,13 @@
 #    By: dojeanno <dojeanno@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/14 13:11:26 by dojeanno          #+#    #+#              #
-#    Updated: 2023/04/22 15:38:51 by dojeanno         ###   ########.fr        #
+#    Updated: 2023/04/25 17:07:35 by dojeanno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libftprintf.a
+
+LIBFTPATH	=	libft/
 
 CC			=	gcc
 
@@ -23,31 +25,25 @@ LIB			=	@ar rcs
 SRCS		=	ft_printf.c\
 
 
-OBJS		=	$(SRCS:.c=.o)
+OBJS_LIST		=	$(SRCS:.c=.o)
 
-SRCS_BONUS	=	
-OBJS_BONUS	=	$(SRCS_BONUS:.c=.o)
-
-ifdef WITH_BONUS	
-OBJS_LIST = $(OBJS) $(OBJS_BONUS)
-else
-OBJS_LIST = $(OBJS)
-endif
-
-all :		$(NAME) 
+all: 		libft $(NAME) 
 	
-$(NAME):	$(OBJS_LIST)
-			$(LIB) $(NAME) $(OBJS_LIST)
-		
-bonus :		
-			@make WITH_BONUS=1 all
-		
+$(NAME):	$(OBJS_LIST) 
+			$(LIB) $(NAME) $(OBJS_LIST) 
+
+libft :		
+			make -C $(LIBFTPATH)
 clean :		
-			$(RM) $(OBJS) $(OBJS_BONUS)
+			$(RM) $(OBJS_LIST) 
+			make -C $(LIBFTPATH) clean
+
 			
 fclean :	clean
-			$(RM) $(NAME)
+			$(RM) $(NAME) 
+			make -C $(LIBFTPATH) fclean
+
 			
 re :		fclean all
 
-.PHONY :	all bonus clean fclean re
+.PHONY :	all clean fclean re libft

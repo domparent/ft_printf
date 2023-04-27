@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dojeanno <dojeanno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 13:36:53 by dojeanno          #+#    #+#             */
-/*   Updated: 2023/04/27 16:02:18 by dojeanno         ###   ########.fr       */
+/*   Created: 2023/04/27 15:26:22 by dojeanno          #+#    #+#             */
+/*   Updated: 2023/04/27 15:57:43 by dojeanno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
- #define FT_PRINTF_H
-#include <stdarg.h>
-#include "libft/libft.h"
+#include "ft_printf.h"
 
-int	ft_printf(const char *str, ...);
-int	check_format(va_list args, const char format);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putchar(char c);
-int	ft_putnbr(int n);
-int	number_len(int n);
-int	ft_putstr(char *str);
+int	ft_putchar(char c)
+{
+	return (write(1, &c, 1));
+}
 
+int	ft_putstr(char *str)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return (ft_strlen(str));
+}
