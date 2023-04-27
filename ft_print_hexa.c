@@ -6,13 +6,13 @@
 /*   By: dojeanno <dojeanno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:44:14 by dojeanno          #+#    #+#             */
-/*   Updated: 2023/04/27 17:49:15 by dojeanno         ###   ########.fr       */
+/*   Updated: 2023/04/27 19:05:46 by dojeanno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hexa_len(unsigned int n)
+int	ft_hexa_len(unsigned long n)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	ft_hexa_len(unsigned int n)
 	return (i);
 }
 
-int	ft_puthexa_lower(unsigned int x)
+int	ft_puthexa_lower(unsigned long x)
 {
 	char	*base;
 
@@ -36,7 +36,7 @@ int	ft_puthexa_lower(unsigned int x)
 	return (ft_hexa_len(x));
 }
 
-int	ft_puthexa_upper(unsigned int x)
+int	ft_puthexa_upper(unsigned long x)
 {
 	char	*base;
 
@@ -45,4 +45,14 @@ int	ft_puthexa_upper(unsigned int x)
 		ft_puthexa_upper(x / 16);
 	write(1, &base[x % 16], 1);
 	return (ft_hexa_len(x));
+}
+
+int	ft_putptr(unsigned long ptr)
+{
+	int	ret;
+
+	ret = 2;
+	write(1, "0x", 2);
+	ret += ft_puthexa_lower(ptr);
+	return (ret);
 }

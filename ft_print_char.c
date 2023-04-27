@@ -6,7 +6,7 @@
 /*   By: dojeanno <dojeanno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:26:22 by dojeanno          #+#    #+#             */
-/*   Updated: 2023/04/27 15:57:43 by dojeanno         ###   ########.fr       */
+/*   Updated: 2023/04/27 19:05:42 by dojeanno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	ft_putstr(char *str)
 		ft_putchar(str[i]);
 		i++;
 	}
-	return (ft_strlen(str));
+	return (i);
 }
