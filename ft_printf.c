@@ -6,7 +6,7 @@
 /*   By: dojeanno <dojeanno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:04:48 by dojeanno          #+#    #+#             */
-/*   Updated: 2023/04/27 16:00:15 by dojeanno         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:50:32 by dojeanno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	check_format(va_list args, const char format)
 	else if (format == 'p')
 		ret += ft_putpr(args);
 	else if (format == 'x')
-		ret += ft_puthexa_lower(args);
+		ret += ft_puthexa_lower(va_arg(args, unsigned int));
 	else if (format == 'X')
-		ret += ft_puthexa_upper(args);
+		ret += ft_puthexa_upper(va_arg(args, unsigned int));
 	else if (format == '%')
 		ret += write(1, "%", 1);		
 	return (ret);

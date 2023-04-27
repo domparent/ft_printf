@@ -6,7 +6,7 @@
 /*   By: dojeanno <dojeanno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:36:53 by dojeanno          #+#    #+#             */
-/*   Updated: 2023/04/27 16:02:18 by dojeanno         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:47:27 by dojeanno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	ft_putchar(char c);
 int	ft_putnbr(int n);
 int	number_len(int n);
 int	ft_putstr(char *str);
+int	ft_hexa_len(unsigned int n);
+int	ft_puthexa_lower(unsigned int x);
+int	ft_puthexa_upper(unsigned int x);
 
 
 #endif
