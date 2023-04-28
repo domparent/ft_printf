@@ -6,7 +6,7 @@
 /*   By: dojeanno <dojeanno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:44:14 by dojeanno          #+#    #+#             */
-/*   Updated: 2023/04/27 19:05:46 by dojeanno         ###   ########.fr       */
+/*   Updated: 2023/04/27 20:45:25 by dojeanno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_hexa_len(unsigned long n)
 	return (i);
 }
 
-int	ft_puthexa_lower(unsigned long x)
+int	ft_puthexa_lower(unsigned int x)
 {
 	char	*base;
 
@@ -36,7 +36,7 @@ int	ft_puthexa_lower(unsigned long x)
 	return (ft_hexa_len(x));
 }
 
-int	ft_puthexa_upper(unsigned long x)
+int	ft_puthexa_upper(unsigned int x)
 {
 	char	*base;
 
@@ -47,12 +47,25 @@ int	ft_puthexa_upper(unsigned long x)
 	return (ft_hexa_len(x));
 }
 
-int	ft_putptr(unsigned long ptr)
+int	ft_putptr(void *ptr)
 {
-	int	ret;
+	int				ret;
+	unsigned long	p;
 
+	p = (unsigned long)ptr;
 	ret = 2;
 	write(1, "0x", 2);
-	ret += ft_puthexa_lower(ptr);
+	ret += ft_putptr_hexa(p);
 	return (ret);
+}
+
+int	ft_putptr_hexa(unsigned long ptr)
+{
+	char	*base;
+
+	base = "0123456789abcdef";
+	if (ptr >= 16)
+		ft_putptr_hexa(ptr / 16);
+	write(1, &base[ptr % 16], 1);
+	return (ft_hexa_len(ptr));
 }
